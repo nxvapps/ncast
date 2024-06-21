@@ -45,7 +45,7 @@ RUN mkdir -p /run/xpra/ /root/.config/qt5ct
 RUN "export QT_QPA_PLATFORMTHEME=qt5ct" >> "/root/.bash_profile"
 
 # Install VirtualGL
-RUN curl -fsSL --output virtualgl.deb 'https://github.com/VirtualGL/virtualgl/releases/download/3.1.1/virtualgl_3.1.1_amd64.deb' && \
+RUN curl -fsSL --output virtualgl.deb 'https://github.com/VirtualGL/virtualgl/releases/download/${VIRTUALGL_VERSION}/virtualgl_${VIRTUALGL_VERSION}_amd64.deb' && \
     apt install -y ./virtualgl.deb && \
     rm -f ./virtualgl.deb
 
@@ -72,6 +72,9 @@ gzip -k /usr/share/xpra/www/css/client.css
 
 # Fix X11
 RUN echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
+
+# Enable services
+RUN systemctl enable fail2ban
 
 # Transfer files
 COPY files/root-files/* /
