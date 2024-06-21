@@ -1,0 +1,5 @@
+encoding = rgb
+mediasource_video = 1
+sharing = 1
+steal = 0
+bandwidth_limit = 0

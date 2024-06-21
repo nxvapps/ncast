@@ -1,0 +1,12 @@
+[Unit]
+Description=NCast programs
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+Environment="QT_QPA_PLATFORMTHEME=qt5ct"
+ExecStart=/usr/bin/xinit -- /usr/bin/Xvfb :100 -noreset -nolisten tcp +extension GLX +extension RANDR +extension RENDER
+
+[Install]
+WantedBy=multi-user.target
