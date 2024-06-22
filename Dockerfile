@@ -1,7 +1,7 @@
 ARG CUDA_VERSION
 ARG UBUNTU_VERSION
 ARG VIRTUALGL_VERSION
-ARG BASE_IMAGE=nvidia/cuda:${CUDA_VERSION}-cudnn-devel-ubuntu${UBUNTU_VER}
+ARG BASE_IMAGE=nvidia/cuda:${CUDA_VERSION}-cudnn-devel-ubuntu${UBUNTU_VERSION}
 FROM ${BASE_IMAGE} as base
 
 # Install repos
