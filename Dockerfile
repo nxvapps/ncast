@@ -10,7 +10,7 @@ RUN apt update && \
  
 # Install repos
 RUN curl -fsSL https://xpra.org/xpra.asc > /usr/share/keyrings/xpra.asc && \
-    curl -fsSL https://xpra.org/repos/jammy/xpra.sources > /etc/apt/sources.list.d/xpra.sources
+    curl -fsSL https://xpra.org/dists/jammy/xpra.sources > /etc/apt/sources.list.d/xpra.sources
 RUN add-apt-repository -y ppa:obsproject/obs-studio && \
     apt update
 
