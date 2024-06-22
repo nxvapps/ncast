@@ -4,6 +4,10 @@ ARG VIRTUALGL_VERSION
 ARG BASE_IMAGE=nvidia/cuda:${CUDA_VERSION}-devel-ubuntu${UBUNTU_VERSION}
 FROM ${BASE_IMAGE} as base
 
+# Install requirements
+RUN apt update && \
+	apt install -y curl
+ 
 # Install repos
 RUN curl -fsSL https://xpra.org/xpra.asc > /usr/share/keyrings/xpra.asc && \
     curl -fsSL https://xpra.org/repos/jammy/xpra.sources > /etc/apt/sources.list.d/xpra.sources
