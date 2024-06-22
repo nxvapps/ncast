@@ -1,3 +1,6 @@
+ARG BASE_IMAGE=nvidia/cuda:${CUDA_VERSION}-cudnn-devel-ubuntu${UBUNTU_VER}
+FROM ${BASE_IMAGE} as base
+
 ARG CUDA_VERSION
 ENV CUDA_VERSION=${CUDA_VERSION}
 
@@ -6,10 +9,6 @@ ENV UBUNTU_VERSION=${UBUNTU_VERSION}
 
 ARG VIRTUALGL_VERSION
 ENV VIRTUALGL_VERSION=${VIRTUALGL_VERSION}
-
-ARG BASE_IMAGE=nvidia/cuda:${CUDA_VERSION}-cudnn-devel-ubuntu${UBUNTU_VER}
-FROM ${BASE_IMAGE} as base
-
 
 # Install repos
 RUN curl -fsSL https://xpra.org/xpra.asc > /usr/share/keyrings/xpra.asc && \
