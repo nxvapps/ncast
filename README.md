@@ -7,12 +7,20 @@ Currently this is only tested on NVIDIA products and configured to use nvenc.
 ### Building
 ```
 . .INFO
-docker build -t "ncast-cuda${CUDA_VERSION}-ubuntu${UBUNTU_VERSION}" .
+docker build \
+  --build-arg CUDA_VERSION=${CUDA_VERSION} \
+  --build-arg UBUNTU_VERSION=${UBUNTU_VERSION} \
+  --build-arg VIRTUALGL_VERSION=${VIRTUALGL_VERSION} \
+  -t "ncast-cuda${CUDA_VERSION}-ubuntu${UBUNTU_VERSION}" \
+  .
 ```
 
 ### Usage
 Please see the included manifests included for Helm and Kubernetes to see how to deploy this container effectively!
 You can find them in the "templates" folder.
+
+### Pull existing pre-built container
+TODO
 
 ### Screenshots
 TODO
