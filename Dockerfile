@@ -6,7 +6,7 @@ FROM ${BASE_IMAGE} as base
 
 # Install requirements
 RUN apt update && \
-	apt install -y curl
+	apt install -y curl software-properties-common
  
 # Install repos
 RUN curl -fsSL https://xpra.org/xpra.asc > /usr/share/keyrings/xpra.asc && \
