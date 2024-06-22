@@ -51,9 +51,12 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@f95db51fddba0c2d1ec667646a06c2ce06100226 # v3.0.0
       
-      - name: Load environment variables from file
-        run: source .INFO
-        id: load-env
+      - name: Load environment variables from file      
+        run: |
+          source .INFO
+          echo "CUDA_VERSION=$CUDA_VERSION" >> $GITHUB_ENV
+          echo "UBUNTU_VERSION=$UBUNTU_VERSION" >> $GITHUB_ENV
+          echo "VIRTUALGL_VERSION=$VIRTUALGL_VERSION" >> $GITHUB_ENV
 
       # Login against a Docker registry except on PR
       # https://github.com/docker/login-action
@@ -71,7 +74,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934 # v5.0.0
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-cuda${{ env.CUDA_VERSION }}-ubuntu${{ env.UBUNTU_VERSION }}
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
@@ -85,6 +88,10 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          build-args: |
+            CUDA_VERSION=${{ env.CUDA_VERSION }}
+            UBUNTU_VERSION=${{ env.UBUNTU_VERSION }}
+            VIRTUALGL_VERSION=${{ env.VIRTUALGL_VERSION }}
 
       # Sign the resulting Docker image digest except on PRs.
       # This will only write to the public Rekor transparency log when the Docker
