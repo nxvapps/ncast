@@ -77,4 +77,6 @@ RUN echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
 RUN systemctl enable fail2ban
 
 # Transfer files
-COPY files/root-files/* /
+COPY files/root-files /root/
+RUN cp -rf /root/root-files/* / && \
+	rm -rf /root/root-files
