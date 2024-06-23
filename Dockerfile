@@ -4,6 +4,10 @@ ARG VIRTUALGL_VERSION
 ARG BASE_IMAGE=nvidia/cuda:${CUDA_VERSION}-devel-ubuntu${UBUNTU_VERSION}
 FROM ${BASE_IMAGE} as base
 
+ENV VIRTUALGL_VERSION=${VIRTUALGL_VERSION}
+ENV CUDA_VERSION=${CUDA_VERSION}
+ENV UBUNTU_VERSION=${UBUNTU_VERSION}
+
 # Install requirements
 RUN apt update && \
 	apt install -y curl software-properties-common
