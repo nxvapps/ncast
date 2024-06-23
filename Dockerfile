@@ -10,7 +10,7 @@ RUN apt update && \
 
 # Install repos
 RUN curl -fsSL https://xpra.org/xpra.asc > /usr/share/keyrings/xpra.asc && \
-    echo 'deb [signed-by=/usr/share/keyrings/xpra.asc] https://xpra.org/dists jammy main' > /etc/apt/sources.list.d/xpra.sources
+    echo 'deb [arch=amd64,arm64 signed-by=/usr/share/keyrings/xpra.asc] https://xpra.org jammy main' > /etc/apt/sources.list.d/xpra.list
 RUN add-apt-repository -y ppa:obsproject/obs-studio && \
     apt update
 
