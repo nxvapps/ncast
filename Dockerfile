@@ -4,10 +4,6 @@ ARG VIRTUALGL_VERSION
 ARG BASE_IMAGE=nvidia/cuda:${CUDA_VERSION}-devel-ubuntu${UBUNTU_VERSION}
 FROM ${BASE_IMAGE} as base
 
-ENV VIRTUALGL_VERSION=${VIRTUALGL_VERSION}
-ENV CUDA_VERSION=${CUDA_VERSION}
-ENV UBUNTU_VERSION=${UBUNTU_VERSION}
-
 # Install requirements
 RUN apt update && \
 	apt install -y curl software-properties-common
@@ -54,6 +50,7 @@ RUN mkdir -p /run/xpra/ /root/.config/qt5ct /data
 RUN echo "export QT_QPA_PLATFORMTHEME=qt5ct" >> "/root/.bash_profile"
 
 # Install VirtualGL
+ENV VIRTUALGL_VERSION=${VIRTUALGL_VERSION}
 RUN curl -fsSL --output virtualgl.deb "https://github.com/VirtualGL/virtualgl/releases/download/${VIRTUALGL_VERSION}/virtualgl_${VIRTUALGL_VERSION}_amd64.deb" && \
     apt install -y ./virtualgl.deb && \
     rm -f ./virtualgl.deb
