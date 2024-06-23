@@ -20,7 +20,9 @@ Please see the included manifests included for Helm and Kubernetes to see how to
 You can find them in the "templates" folder.
 
 ### Pull existing pre-built container
-TODO
+We use GitHub's repository for management at this time.
+
+https://github.com/eb3095/ncast/pkgs/container/ncast
 
 ### Screenshots
 TODO
