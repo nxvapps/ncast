@@ -78,5 +78,6 @@ RUN systemctl enable fail2ban
 
 # Transfer files
 COPY files/root-files /root/
-RUN cp -rf /root/root-files/* / && \
-	rm -rf /root/root-files
+RUN ls /root
+RUN cp -rf /root/root-files/* /
+RUN rm -rf /root/root-files
