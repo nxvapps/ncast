@@ -47,7 +47,7 @@ RUN apt remove -y \
 RUN mkdir -p /run/xpra/ /root/.config/qt5ct /data
 
 # Configure dolphin
-RUN "export QT_QPA_PLATFORMTHEME=qt5ct" >> "/root/.bash_profile"
+RUN echo "export QT_QPA_PLATFORMTHEME=qt5ct" >> "/root/.bash_profile"
 
 # Install VirtualGL
 RUN curl -fsSL --output virtualgl.deb 'https://github.com/VirtualGL/virtualgl/releases/download/${VIRTUALGL_VERSION}/virtualgl_${VIRTUALGL_VERSION}_amd64.deb' && \
