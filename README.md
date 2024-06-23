@@ -11,7 +11,7 @@ docker build \
   --build-arg CUDA_VERSION=${CUDA_VERSION} \
   --build-arg UBUNTU_VERSION=${UBUNTU_VERSION} \
   --build-arg VIRTUALGL_VERSION=${VIRTUALGL_VERSION} \
-  -t "ncast-cuda${CUDA_VERSION}-ubuntu${UBUNTU_VERSION}" \
+  -t "ncast:cuda${CUDA_VERSION}-ubuntu${UBUNTU_VERSION}" \
   .
 ```
 
@@ -24,6 +24,10 @@ TODO
 
 ### Screenshots
 TODO
+
+### Configuration
+All configuration for obs can be found in /data/obs. If no data is present a default set will be copied over
+to ensure a base level of functionality.
 
 ### Credits
 For now we support open source contributors and use only projects with open licenses. If you are going to

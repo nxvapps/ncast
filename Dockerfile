@@ -7,10 +7,10 @@ FROM ${BASE_IMAGE} as base
 # Install requirements
 RUN apt update && \
 	apt install -y curl software-properties-common
- 
+
 # Install repos
 RUN curl -fsSL https://xpra.org/xpra.asc > /usr/share/keyrings/xpra.asc && \
-    echo 'deb [signed-by=/usr/share/keyrings/xpra.asc] https://xpra.org/dists/jammy jammy main' > /etc/apt/sources.list.d/xpra.sources
+    echo 'deb [signed-by=/usr/share/keyrings/xpra.asc] https://xpra.org/dists jammy main' > /etc/apt/sources.list.d/xpra.sources
 RUN add-apt-repository -y ppa:obsproject/obs-studio && \
     apt update
 
@@ -45,7 +45,7 @@ RUN apt remove -y \
 RUN nvidia-xconfig
 
 # Setup environment
-RUN mkdir -p /run/xpra/ /root/.config/qt5ct
+RUN mkdir -p /run/xpra/ /root/.config/qt5ct /data
 
 # Configure dolphin
 RUN "export QT_QPA_PLATFORMTHEME=qt5ct" >> "/root/.bash_profile"
@@ -56,6 +56,7 @@ RUN curl -fsSL --output virtualgl.deb 'https://github.com/VirtualGL/virtualgl/re
     rm -f ./virtualgl.deb
 
 # Fix Themeing
+COPY files/xpra.css /tmp/xpra.css
 RUN ln -s /usr/share/xpra/icons/browser.png /usr/share/xpra/icons/Internet.png && \
 ln -s /usr/share/xpra/icons/video.png /usr/share/xpra/icons/Multimedia.png && \
 ln -s /usr/share/xpra/icons/display.png /usr/share/xpra/icons/Graphics.png && \
@@ -63,15 +64,8 @@ ln -s /usr/share/xpra/icons/toolbox.png /usr/share/xpra/icons/Settingsmenu.png &
 ln -s /usr/share/xpra/icons/linux.png /usr/share/xpra/icons/System.png && \
 ln -s /usr/share/xpra/icons/features.png /usr/share/xpra/icons/Utilities.png && \
 sed -i 's|hicolor|breeze|g' /usr/lib/python3/dist-packages/xdg/Config.py && \
-echo '#float_menu {' >> /usr/share/xpra/www/css/client.css && \
-echo '	background: white !important;' >> /usr/share/xpra/www/css/client.css && \
-echo '}' >> /usr/share/xpra/www/css/client.css && \
-echo '#float_tray {' >> /usr/share/xpra/www/css/client.css && \
-echo '	display: none !important;' >> /usr/share/xpra/www/css/client.css && \
-echo '}' >> /usr/share/xpra/www/css/client.css && \
-echo 'body {' >> /usr/share/xpra/www/css/client.css && \
-echo '  background-image: url(../background.png);' >> /usr/share/xpra/www/css/client.css && \
-echo '}' >> /usr/share/xpra/www/css/client.css && \
+cat /tmp/xpra.css >> /usr/share/xpra/www/css/client.css && \
+rm -f /tmp/xpra.css && \
 rm -rf /usr/share/xpra/www/css/client.css.br /usr/share/xpra/www/css/client.css.gz && \
 brotli /usr/share/xpra/www/css/client.css && \
 gzip -k /usr/share/xpra/www/css/client.css

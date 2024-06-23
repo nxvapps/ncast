@@ -1,0 +1,11 @@
+#float_menu {
+	background: white !important;
+}
+
+#float_tray {
+	display: none !important;
+}
+
+body {
+  background-image: url(../background.png);
+}
