@@ -43,9 +43,6 @@ RUN apt remove -y \
 	tmux \
 	xterm
 
-# Setup X
-RUN nvidia-xconfig
-
 # Setup environment
 RUN mkdir -p /run/xpra/ /root/.config/qt5ct /data
 
