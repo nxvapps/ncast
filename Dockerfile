@@ -15,25 +15,27 @@ RUN add-apt-repository -y ppa:obsproject/obs-studio && \
     apt update
 
 # Install packages
-RUN apt install -y  \
-	breeze-icon-theme \
-	brotli \
-	dbus-x11 \
-	dolphin \
-	fail2ban \
-	pulseaudio \
-	python3-xdg \
-	qt5ct \
-	tilix \
-	vlc \
-	xinit \
-	xpra \
-	xpra-codecs-nvidia \
-	xpra-html5 \
-	xpra-x11 \
-	xserver-xorg-core \
-	xserver-xorg-legacy \
-	obs-studio
+RUN echo "keyboard-configuration keyboard-configuration/layoutcode select us" | debconf-set-selections && \
+	echo "keyboard-configuration keyboard-configuration/xkb-keymap select us" | debconf-set-selections && \
+	apt install -y  \
+		breeze-icon-theme \
+		brotli \
+		dbus-x11 \
+		dolphin \
+		fail2ban \
+		pulseaudio \
+		python3-xdg \
+		qt5ct \
+		tilix \
+		vlc \
+		xinit \
+		xpra \
+		xpra-codecs-nvidia \
+		xpra-html5 \
+		xpra-x11 \
+		xserver-xorg-core \
+		xserver-xorg-legacy \
+		obs-studio
 
 # Remove bundled apps
 RUN apt remove -y \
