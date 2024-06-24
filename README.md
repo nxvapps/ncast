@@ -1,5 +1,5 @@
 # ncast
-A headless OBS environment in a container. The app ise exposed via a web frontend for use via XPRA. This allows
+A headless OBS environment in a container. The app is exposed via a web frontend for use via XPRA. This allows
 for a completely web delivered OBS with full GPU acceleration.
 
 Currently this is only tested on NVIDIA products and configured to use nvenc.
@@ -39,6 +39,6 @@ support this project, considering throwing one of the listed people a hand as we
 * Eric Benner (eb3095)
 
 #### Art
-Hey, not artists here. Want to engage but not technical? Heres a chance! We could use custom art work.
+Hey artists! Want to engage but not technical? Heres a chance! We could use custom art work.
 
 * \[Background.png\] darkdissolution - https://www.deviantart.com/darkdissolution/art/Abstract-Wallpaper-Free-to-Use-96-938676956
