@@ -22,5 +22,5 @@ sed -i -e "s/ServerPassword=.*+/ServerPassword=${APP_PASSWORD}/g" "/root/.config
 echo "${APP_PASSWORD}" >> /root/.xprapasswd
 
 echo "Starting app..." | tee /var/log/ncast.log 2>&1
-systemctl start ncast
+systemctl start x11-gl-session
 systemctl start xpra-web

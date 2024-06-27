@@ -22,7 +22,7 @@ You can find them in the "templates" folder.
 ### Pull existing pre-built container
 We use GitHub's repository for management at this time.
 
-https://github.com/eb3095/ncast/pkgs/container/ncast
+https://github.com/nxvapps/ncast/pkgs/container/ncast
 
 ### Screenshots
 TODO
@@ -34,9 +34,6 @@ to ensure a base level of functionality.
 ### Credits
 For now we support open source contributors and use only projects with open licenses. If you are going to
 support this project, considering throwing one of the listed people a hand as well!
-
-#### Developers
-* Eric Benner (eb3095)
 
 #### Art
 Hey artists! Want to engage but not technical? Heres a chance! We could use custom art work.

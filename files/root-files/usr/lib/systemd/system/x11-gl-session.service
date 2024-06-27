@@ -1,5 +1,5 @@
 [Unit]
-Description=NCast programs
+Description=X11 GL Session
 
 [Service]
 Type=simple

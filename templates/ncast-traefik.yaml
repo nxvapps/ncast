@@ -1,0 +1,107 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ncast
+  labels:
+    name: ncast
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ncast-secret
+  namespace: ncast
+type: Opaque
+data:
+  APP_PASSWORD: VEVTVFBBU1NXT1JE # base64 encoded value of 'TESTPASSWORD'
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ncast-basic-auth
+  namespace: ncast
+data:
+  auth: bmNhc3Q6JGFwcjEkVlhGVXJKRkkkNkREV0I0N3lkZm11OFljUzhWSVM1MAoK # User: 'ncast' Password: 'TESTPASSWORD'
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ncast
+  namespace: ncast
+spec:
+  selector:
+    matchLabels:
+      app: ncast
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: ncast
+      namespace: ncast
+    spec:
+      containers:
+      - name: ncast
+        image: ghcr.io/nxvapps/ncast:cuda12.5.0-ubuntu22.04
+        env:
+        - name: APP_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: ncast-secret
+              key: APP_PASSWORD
+        ports:
+        - containerPort: 7777
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 7777
+            scheme: HTTP
+          initialDelaySeconds: 300
+          periodSeconds: 10
+---
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    app: ncast
+  name: ncast
+  namespace: ncast
+spec:
+  ports:
+    - port: 7777
+      name: http
+      targetPort: 7777
+  selector:
+    app: ncast
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: ncast-auth-middleware
+  namespace: ncast
+spec:
+  basicAuth:
+    removeHeader: true
+    secret: ncast-basic-auth
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ncast
+  namespace: ncast
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/service.scheme: "http"
+    traefik.ingress.kubernetes.io/router.middlewares: ncast-ncast-auth-middleware@kubernetescrd
+spec:
+  ingressClassName: "traefik"
+  rules:
+  - host: ncast.somedomain.com
+    http:
+        paths:
+        - pathType: Prefix
+          path: "/"
+          backend:
+            service:
+              name: ncast
+              port:
+                number: 7777

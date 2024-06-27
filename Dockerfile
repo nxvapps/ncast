@@ -80,3 +80,8 @@ RUN systemctl enable fail2ban
 COPY files/root-files /root/root-files
 RUN cp -rf /root/root-files/* / && \
 	rm -rf /root/root-files
+
+# Permissions
+RUN chmod +x /root/run.sh
+
+ENTRYPOINT ["sh", "-c", "/root/run.sh"]

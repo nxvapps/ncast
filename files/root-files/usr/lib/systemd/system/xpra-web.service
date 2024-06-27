@@ -7,7 +7,7 @@ Type=simple
 Restart=always
 RestartSec=3
 Environment="QT_QPA_PLATFORMTHEME=qt5ct"
-ExecStart=/usr/bin/xpra start --use-display :100 --username=ncast --password-file=/root/.xprapasswd --no-daemon --bind-tcp=127.0.0.1:7777
+ExecStart=/usr/bin/xpra start --use-display :100 --username=ncast --password-file=/root/.xprapasswd --no-daemon --bind-tcp=0.0.0.0:7777
 ExecStop=/usr/bin/xpra stop :100
 
 [Install]
