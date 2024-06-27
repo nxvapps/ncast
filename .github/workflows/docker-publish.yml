@@ -60,6 +60,7 @@ jobs:
           echo "CUDA_VERSION=$CUDA_VERSION" >> $GITHUB_ENV
           echo "UBUNTU_VERSION=$UBUNTU_VERSION" >> $GITHUB_ENV
           echo "VIRTUALGL_VERSION=$VIRTUALGL_VERSION" >> $GITHUB_ENV
+          echo "LIBNVIDIA_VERSION=$LIBNVIDIA_VERSION" >> $GITHUB_ENV
           echo "APP=$APP" >> $GITHUB_ENV
           echo "APP_INSTALL=$APP_INSTALL" >> $GITHUB_ENV
           echo "APP_START=$APP_START" >> $GITHUB_ENV
@@ -103,6 +104,7 @@ jobs:
             CUDA_VERSION=${{ env.CUDA_VERSION }}
             UBUNTU_VERSION=${{ env.UBUNTU_VERSION }}
             VIRTUALGL_VERSION=${{ env.VIRTUALGL_VERSION }}
+            LIBNVIDIA_VERSION=${{ env.LIBNVIDIA_VERSION }}
 
       # Sign the resulting Docker image digest except on PRs.
       # This will only write to the public Rekor transparency log when the Docker
