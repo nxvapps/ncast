@@ -14,6 +14,5 @@ rm -rf files
 cp -rf vapp/* ./
 rm -rf vapp
 
-apt update
-apt install -y tree
-tree
+ls -lhta
+ls -lhta files
