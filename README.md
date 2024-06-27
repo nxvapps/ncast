@@ -14,7 +14,7 @@ docker build \
   --build-arg APP=${APP} \
   --build-arg APP_START=${APP_START} \
   --build-arg APP_INSTALL=${APP_INSTALL} \
-  -t "ncast:cuda${CUDA_VERSION}-ubuntu${UBUNTU_VERSION}" \
+  -t "${APP}:cuda${CUDA_VERSION}-ubuntu${UBUNTU_VERSION}" \
   .
 ```
 

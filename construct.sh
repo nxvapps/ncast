@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eoux pipefail
+set -eou pipefail
 . ./.INFO
 
 # This is the construction script. This is used to construct the environment
