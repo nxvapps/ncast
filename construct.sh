@@ -8,17 +8,14 @@ set -eoux pipefail
 
 # Clone the base repo
 git clone https://github.com/nxvapps/vapp.git
-ls -lhta
-ls -lhta vapp
 
 # Move all overrides
-cp -rf files vapp/
-rm -rf files
+if [ -d files ]; then
+    cp -rf files vapp/
+    rm -rf files
+fi
 
 # Transfer project
 rm -rf vapp/.git
 cp -rf vapp/* ./
 rm -rf vapp
-
-ls -lhta
-ls -lhta files
