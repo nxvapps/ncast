@@ -13,3 +13,5 @@ rm -rf files
 # Transfer project
 cp -rf vapp/* ./
 rm -rf vapp
+
+ls -lhta
