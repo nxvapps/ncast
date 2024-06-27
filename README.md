@@ -42,7 +42,7 @@ We use GitHub's repository for management at this time.
 https://github.com/nxvapps/ncast/pkgs/container/ncast
 
 ### Screenshots
-TODO
+![OBS In a browser](https://raw.githubusercontent.com/nxvapps/ncast/main/screenshots/ncast.png)
 
 ### Configuration
 All configuration for obs can be found in /data/obs. If no data is present a default set will be copied over
