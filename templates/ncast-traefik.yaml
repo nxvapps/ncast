@@ -48,7 +48,7 @@ spec:
           medium: Memory
       containers:
       - name: ncast
-        image: ghcr.io/nxvapps/ncast:cuda12.5.0-ubuntu22.04
+        image: ghcr.io/nxvapps/ncast:cuda12.4.0-ubuntu22.04
         env:
         - name: APP_PASSWORD
           valueFrom:
