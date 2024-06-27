@@ -9,7 +9,7 @@ fi
 
 if [ -z "$(ls -A /data)" ]; then
    echo "Copying default files and linking fs" | tee /var/log/ncast.log
-   cp -rf /root/.config/obs-default /data/obs
+   cp -rf /root/.config/obs /data/obs
    ln -s /data/obs /root/.config/obs
 fi
 
