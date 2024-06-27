@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eou pipefail
+set -eoux pipefail
 . ./.INFO
 
 # This is the construction script. This is used to construct the environment
@@ -11,6 +11,7 @@ cp -rf files vapp/
 rm -rf files
 
 # Transfer project
+rm -rf vapp/.git
 cp -rf vapp/* ./
 rm -rf vapp
 
