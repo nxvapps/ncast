@@ -8,7 +8,7 @@ set -eou pipefail
 
 # Move all overrides
 cp -rf files vapp/
-rm -f files
+rm -rf files
 
 # Transfer project
 cp -rf vapp/* ./
