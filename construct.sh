@@ -6,6 +6,9 @@ set -eoux pipefail
 # This is the construction script. This is used to construct the environment
 # for the build process.
 
+ls -lhta
+ls -lhta vapp
+
 # Move all overrides
 cp -rf files vapp/
 rm -rf files
