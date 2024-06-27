@@ -13,14 +13,12 @@ if [ -z "$(ls -A /data)" ]; then
    ln -s /data/obs /root/.config/obs
 fi
 
-# Run nvidia-xconfig
-echo "Running nvidia-xconfig" | tee /var/log/ncast.log
-nvidia-xconfig
+export QT_QPA_PLATFORMTHEME=qt5ct
 
 # Set passwords
 sed -i -e "s/ServerPassword=.*+/ServerPassword=${APP_PASSWORD}/g" "/root/.config/obs-studio/global.ini"
 echo "${APP_PASSWORD}" >> /root/.xprapasswd
 
 echo "Starting app..." | tee /var/log/ncast.log 2>&1
-systemctl start x11-gl-session
-systemctl start xpra-web
+bash /root/x11-session.sh | tee /var/log/ncast.log & 2>&1
+bash /root/xpra-session.sh | tee /var/log/ncast.log & 2>&1
