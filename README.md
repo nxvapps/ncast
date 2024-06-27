@@ -22,6 +22,10 @@ docker build \
 Please see the included manifests included for Helm and Kubernetes to see how to deploy this container effectively!
 You can find them in the "templates" folder.
 
+#### v4l2loopback
+This needs to be enabled and loaded on the host in order to function. Please use the v4l2loopback_install.sh
+script to set this up.
+
 #### OBS Port
 You can change the OBS server port with the `OBS_PORT` environment variable at runtime. The default port is 4455/TCP
 
