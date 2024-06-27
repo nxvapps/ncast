@@ -22,8 +22,11 @@ docker build \
 Please see the included manifests included for Helm and Kubernetes to see how to deploy this container effectively!
 You can find them in the "templates" folder.
 
+#### OBS Port
+You can change the OBS server port with the `OBS_PORT` environment variable at runtime. The default port is 4455/TCP
+
 #### Port
-You can change the port with the `PORT` environment variable at runtime.
+You can change the port with the `PORT` environment variable at runtime. The default port is 7777/TCP
 
 #### App Password
 You can change the password with the `APP_PASSWORD` environment variable at runtime.
