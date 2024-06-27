@@ -11,7 +11,7 @@ if [ -z "$(ls -A /data)" ]; then
 fi
 
 echo "Settings OBS Server Port: ${OBS_PORT}" | tee /var/log/ncast.log
-sed -i -e "s/ServerPort=.*+/ServerPort=${OBS_PORT}/g" /root/.config/obs-studio/global.ini
+sed -i -e "s/ServerPort=.*+/ServerPort=${OBS_PORT}/g" /root/.config/obs/obs-studio/global.ini
 
 echo "Setting OBS Password to APP_PASSWORD" | tee /var/log/ncast.log
-sed -i -e "s/ServerPassword=.*+/ServerPassword=${APP_PASSWORD}/g" /root/.config/obs-studio/global.ini
+sed -i -e "s/ServerPassword=.*+/ServerPassword=${APP_PASSWORD}/g" /root/.config/obs/obs-studio/global.ini
