@@ -7,7 +7,7 @@ set -eou pipefail
 # for the build process.
 
 # Move all overrides
-cp -rf files vapp/
+cp -rf files vapp/*
 rm -rf files
 
 # Transfer project
