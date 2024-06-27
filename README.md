@@ -22,6 +22,12 @@ docker build \
 Please see the included manifests included for Helm and Kubernetes to see how to deploy this container effectively!
 You can find them in the "templates" folder.
 
+#### Port
+You can change the port with the `PORT` environment variable at runtime.
+
+#### App Password
+You can change the password with the `APP_PASSWORD` environment variable at runtime.
+
 ### Pull existing pre-built container
 We use GitHub's repository for management at this time.
 
