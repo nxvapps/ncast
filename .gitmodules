@@ -1,4 +1,0 @@
-[submodule "vapp"]
-	path = vapp
-	url = https://github.com/nxvapps/vapp.git
-	branch = main

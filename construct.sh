@@ -6,6 +6,8 @@ set -eoux pipefail
 # This is the construction script. This is used to construct the environment
 # for the build process.
 
+# Clone the base repo
+git clone https://github.com/nxvapps/vapp.git
 ls -lhta
 ls -lhta vapp
 
