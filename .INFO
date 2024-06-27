@@ -1,3 +1,6 @@
 export CUDA_VERSION=12.5.0
 export UBUNTU_VERSION=22.04
 export VIRTUALGL_VERSION=3.1.1
+export APP=ncast
+export APP_START=obs
+export APP_INSTALL=obs-studio

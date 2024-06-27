@@ -11,6 +11,9 @@ docker build \
   --build-arg CUDA_VERSION=${CUDA_VERSION} \
   --build-arg UBUNTU_VERSION=${UBUNTU_VERSION} \
   --build-arg VIRTUALGL_VERSION=${VIRTUALGL_VERSION} \
+  --build-arg APP=${APP} \
+  --build-arg APP_START=${APP_START} \
+  --build-arg APP_INSTALL=${APP_INSTALL} \
   -t "ncast:cuda${CUDA_VERSION}-ubuntu${UBUNTU_VERSION}" \
   .
 ```

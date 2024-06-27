@@ -24,7 +24,6 @@ env:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -45,6 +44,10 @@ jobs:
         with:
           cosign-release: 'v2.2.4'
 
+      # Build the environment for NXVapps vapp
+      - name: Build vapp environment
+        run: bash ./construct.sh
+
       # Set up BuildKit Docker container builder to be able to build
       # multi-platform images and export cache
       # https://github.com/docker/setup-buildx-action
@@ -57,6 +60,9 @@ jobs:
           echo "CUDA_VERSION=$CUDA_VERSION" >> $GITHUB_ENV
           echo "UBUNTU_VERSION=$UBUNTU_VERSION" >> $GITHUB_ENV
           echo "VIRTUALGL_VERSION=$VIRTUALGL_VERSION" >> $GITHUB_ENV
+          echo "APP=$APP" >> $GITHUB_ENV
+          echo "APP_INSTALL=$APP_INSTALL" >> $GITHUB_ENV
+          echo "APP_START=$APP_START" >> $GITHUB_ENV
 
       # Login against a Docker registry except on PR
       # https://github.com/docker/login-action
@@ -91,6 +97,9 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           build-args: |
+            APP=${{ env.APP }}
+            APP_INSTALL=${{ env.APP_INSTALL }}
+            APP_START=${{ env.APP_START }}
             CUDA_VERSION=${{ env.CUDA_VERSION }}
             UBUNTU_VERSION=${{ env.UBUNTU_VERSION }}
             VIRTUALGL_VERSION=${{ env.VIRTUALGL_VERSION }}
